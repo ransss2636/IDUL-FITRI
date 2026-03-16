@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Idul Fitri 1447 H</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&amp;family=Amiri:wght@400;700&amp;display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #011a0b 0%, #00A859 25%, #D4AF37 50%, #FFF8DC 100%);
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,215,0,0.4) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(212,175,55,0.3) 0%, transparent 40%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 20px);
+            animation: bgShift 10s ease-in-out infinite;
+        }
+        @keyframes bgShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .floating-lantern {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(ellipse at center, #FFD700 0%, #D4AF37 70%, transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #FF4500;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #FF4500;
+        }
+        .lantern1 { top: 15%; left: 10%; animation-delay: 0s; }
+        .lantern2 { top: 60%; right: 15%; animation-delay: 2s; }
+        .lantern3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+        .star {
+            position: absolute;
+            color: #FFD700;
+            font-size: 2em;
+            animation: twinkle 2s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .container {
+            z-index: 10;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.3);
+            max-width: 700px;
+            animation: slideIn 1s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.9) translateY(50px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .hero {
+            font-size: clamp(2em, 6vw, 4em);
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFF8DC, #D4AF37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-family: 'Amiri', serif;
+            line-height: 1.2;
+        }
+        .sub-hero {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            font-family: 'Amiri', serif;
+        }
+        .main-btn {
+            background: linear-gradient(45deg, #00A859, #028A0F);
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 15px 40px rgba(0,168,89,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .main-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,168,89,0.6);
+        }
+        .main-btn:active {
+            transform: translateY(-4px);
+        }
+        .greeting-card {
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            background: rgba(255, 248, 220, 0.2);
+            padding: 40px;
+            border-radius: 25px;
+            border-left: 6px solid #FFD700;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .greeting-card.show {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 500px;
+        }
+        .greeting-text {
+            font-size: 1.4em;
+            line-height: 1.6;
+            font-family: 'Cairo', sans-serif;
+            text-align: justify;
+        }
+        .share-btn {
+            margin-top: 20px;
+            background: linear-gradient(45deg, #D4AF37, #FFD700);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .share-btn:hover {
+            transform: scale(1.05);
+        }
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 40px 30px; margin: 20px; }
+            .hero { font-size: 2.2em; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="confetti-canvas"></canvas>
+    
+    <div class="floating-lantern lantern1"></div>
+    <div class="floating-lantern lantern2"></div>
+    <div class="floating-lantern lantern3"></div>
+    
+    <!-- Stars -->
+    <div class="star" style="top:10%;left:20%;animation-delay:0s;">⭐</div>
+    <div class="star" style="top:15%;right:25%;animation-delay:0.5s;">✨</div>
+    <div class="star" style="bottom:30%;left:15%;animation-delay:1s;">⭐</div>
+    
+    <div class="container">
+        <div class="hero">Selamat Hari Raya Idul Fitri<br><span style="font-size:0.7em;">1447 H / 2026 M</span></div>
+        <div class="sub-hero">Taqabbalallahu minna wa minkum</div>
+        
+        <button class="main-btn" onclick="openGreeting()">🕌 Buka Ucapan 🕌</button>
+        
+        <div id="greetingCard" class="greeting-card">
+            <div class="greeting-text">
+                Selamat Hari Raya Idul Fitri 1447 H / 2026 M.<br><br>
+                Mohon maaf lahir dan batin.<br><br>
+                Semoga Allah SWT menerima amal ibadah kita semua.<br>
+                Taqabbalallahu minna wa minkum shoom'iatana wa shu'umakum.
+            </div>
+            <button class="share-btn" onclick="shareGreeting()">📱 Bagikan Ucapan Ini</button>
+        </div>
+    </div>
+
+    <audio id="takbirAudio" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcD..." type="audio/wav">
+        <!-- Fallback free takbir sound link -->
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let confetti = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 2,
+                    d: Math.random() * 300 + 100,
+                    color: ['#FFD700', '#00A859', '#D4AF37', '#FFF8DC', '#FF4500'][Math.floor(Math.random()*5)],
+                    rotation: Math.random() * 360,
+                    drift: Math.random() * 2 - 1
+                });
+            }
+        }
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach((c, i) => {
+                c.y += c.d / 60;
+                c.rotation += 5;
+                c.x += c.drift;
+                if (c.y > canvas.height) confetti.splice(i, 1);
+                ctx.save();
+                ctx.translate(c.x, c.y);
+                ctx.rotate(c.rotation * Math.PI / 180);
+                ctx.fillStyle = c.color;
+                ctx.fillRect(-c.r/2, -c.r/2, c.r, c.r);
+                ctx.restore();
+            });
+            if (confetti.length) requestAnimationFrame(drawConfetti);
+        }
+
+        const audio = document.getElementById('takbirAudio');
+        
+        function openGreeting() {
+            // Play audio
+            audio.currentTime = 0;
+            audio.play().catch(e => console.log('Audio play failed:', e));
+            
+            // Confetti
+            createConfetti();
+            drawConfetti();
+            
+            // Show greeting
+            const card = document.getElementById('greetingCard');
+            card.classList.add('show');
+            
+            // Lantern glow
+            document.querySelectorAll('.floating-lantern').forEach(l => {
+                l.style.animation = 'float 2s ease-in-out infinite, glow 1s ease-in-out infinite';
+            });
+        }
+
+        // Add glow animation dynamically
+        const glowStyle = document.createElement('style');
+        glowStyle.textContent = `
+            @keyframes glow {
+                0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.5); }
+                50% { box-shadow: 0 0 40px rgba(255,215,0,1); }
+            }
+        `;
+        document.head.appendChild(glowStyle);
+
+        function shareGreeting() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Selamat Idul Fitri 1447 H',
+                    text: 'Selamat Hari Raya Idul Fitri!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Link ucapan disalin ke clipboard!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
